@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# This pings the IP address passed as an argument
+
+# Check if no arguments are provided
+if [ $# -eq 0 ]; then
+  echo "Usage: $0 {IP_ADDRESS}"
+  echo "Pinging default IP 5 times..."
+  ping -c 5 192.168.1.100  # Pinging localhost for demonstration
+  exit 1
+fi
+
+# Check if the first argument is provided and is a valid IP address
+if [[ ! "$1" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+  echo "Error: Invalid IP address format"
+  echo "Usage: $0 {IP_ADDRESS}"
+  exit 1
+fi
+
+# Ping the provided IP address 5 times
+echo "Pinging $1 5 times..."
+ping -c 5 "$1"
+
