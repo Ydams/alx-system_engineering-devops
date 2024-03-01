@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#This is a script that configures an Ubuntu server
+
+# Backup the original hosts file
+sudo cp /etc/hosts /etc/hosts.bak
+
+# Update localhost to resolve to 127.0.0.2
+sudo sed -i 's/127.0.0.1/127.0.0.2/g' /etc/hosts
+
+# Update facebook.com to resolve to 8.8.8.8
+sudo sed -i 's/157.240.11.35/8.8.8.8/g' /etc/hosts
+
+echo "Hosts file updated:"
+cat /etc/hosts
+
